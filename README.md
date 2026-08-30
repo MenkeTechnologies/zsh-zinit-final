@@ -12,7 +12,7 @@
 
 ---
 
-[![Tag](https://img.shields.io/badge/tag-v0.1.0-39ff14.svg)](https://github.com/MenkeTechnologies/zsh-zinit-final/tags)
+[![Tag](https://img.shields.io/github/v/tag/MenkeTechnologies/zsh-zinit-final?sort=semver&label=tag&color=39ff14)](https://github.com/MenkeTechnologies/zsh-zinit-final/tags)
 [![Shell](https://img.shields.io/badge/shell-zsh-05d9e8.svg)](#install)
 [![Loader](https://img.shields.io/badge/loader-zinit-d300c5.svg)](https://github.com/zdharma-continuum/zinit)
 [![Bytes](https://img.shields.io/badge/payload-0%20fns-ff2a6d.svg)](zsh-zinit-final.plugin.zsh)
