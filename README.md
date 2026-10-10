@@ -26,7 +26,7 @@
 
 ## `> SYSTEM OVERVIEW`
 
-`zsh-zinit-final` is an intentionally empty plugin whose only purpose is to be the **last** thing zinit loads in your boot chain. Use it as the carrier for `atinit` or `atload` ices when you need a hook that fires after every other plugin has finished — without bolting that hook onto an unrelated plugin that may be deferred, lazy-loaded, or reordered.
+`zsh-zinit-final` is an intentionally empty plugin whose only purpose is to be a carrier for `atinit` or `atload` ices. Declare it **last** in your zinit chain so its hook is queued after the plugins declared before it — without bolting that hook onto an unrelated plugin that may be deferred, lazy-loaded, or reordered.
 
 Zero functions. Zero aliases. Zero state. Just a `.plugin.zsh` stub zinit will load + run your ice against.
 
@@ -34,14 +34,14 @@ Zero functions. Zero aliases. Zero state. Just a `.plugin.zsh` stub zinit will l
 
 ## `> WHY THIS EXISTS`
 
-zinit's `ice atinit` and `ice atload` run code at well-defined points in the load lifecycle of the **next** plugin. If you want code to run AFTER your whole boot chain finishes — but the last "real" plugin in your chain has unpredictable ordering (turbo, wait-N, lucid) — you need a deterministic trailing carrier. That's this.
+zinit's `ice atinit` and `ice atload` run code at well-defined points in the load lifecycle of the **next** plugin. If you want code to run after the plugins declared before it — but the last "real" plugin in your chain is deferred (turbo, wait-N, lucid) — you need a dedicated trailing carrier. That's this.
 
 ```
 zinit ice wait'0' lucid atload'source $HOME/.zshrc.local'
 zinit load MenkeTechnologies/zsh-zinit-final
 ```
 
-Now `$HOME/.zshrc.local` runs once after every other turbo'd plugin in the chain, with no side-effects on any of them.
+Now `$HOME/.zshrc.local` is sourced by the `atload` ice when this stub loads, with no side-effects on the other plugins.
 
 ---
 
